@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SonicBoom">
+  <meta name="keywords" content="tactile sensing, audio, agriculture">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SonicBoom: Contact Localization Using Array of Microphones</title>
+
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/RI_logo.jpg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+<!-- Title  block for author -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SonicBoom: Contact Localization Using Array of Microphones</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+
+              <a href="https://markmlee.github.io/">Moonyoung Lee</a></sup>,</span>
+            <span class="author-block">
+              <a href="https://uksangyoo.github.io/">Uksang Yoo</a></sup>,</span>
+              <span class="author-block">
+                <a href="https://www.cs.cmu.edu/~./jeanoh/">Jean Oh</a></sup>,
+              </span>
+              <a href="https://ichnow.ski/">Jeffrey Ichnowski</a></sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.ri.cmu.edu/ri-faculty/george-a-kantor/"> George Kantor</a></sup>
+            </span>
+              <a href="https://www.ri.cmu.edu/ri-faculty/oliver-kroemer/">Oliver Kroemer</a></sup>,
+            </span>
+            
+            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Carnegie Mellon University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. --> 
+              <span class="link-block">
+                  <a href="https://arxiv.org/abs/2412.09878"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+              <!--
+              <span class="link-block">
+                <a href="https://kantor-lab.github.io/tree_gnn/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv (Coming Soon)</span>
+                </a>
+              </span>
+              -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/4bdHyQtuqrM"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/chjohnkim/tree_gnn.git"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!--
+              <span class="link-block">
+                <a href="https://labs.ri.cmu.edu/kantorlab/data-sets/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              -->
+            </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Motivation image -->
+<section class="hero teaser"> 
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <div class="contact-policy">
+              <video poster="" id="contact-policy" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/video_static_hits.mp4" type="video/mp4">
+              </video>
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf"> Contact point estimation using acoustic signals - prediction point (<span style="color: red;">red</span>)
+              </h2>
+            </div>
+          </div>
+          <div class="column">
+            <div class="dataset">
+              <video poster="" id="dataset" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/video_mapping.mp4" type="video/mp4">
+              </video>
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf"> Haptic mapping using SonicBoom to locate the rigid object - estimated occupancy (<span style="color: green;">green</span>)  
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+
+            In cluttered environments where visual sensors
+            encounter heavy occlusion, such as in agricultural settings,
+            tactile signals can provide crucial spatial information for the
+            robot to locate rigid objects and maneuver around them. We
+            introduce SonicBoom, a holistic hardware and learning pipeline
+            that enables contact localization through an array of contact
+            microphones. While conventional sound source localization methods
+            effectively triangulate sources in air, localization through
+            solid media with irregular geometry and structure presents
+            challenges that are difficult to model analytically. We address this
+            challenge through a feature-engineering and learning-based approach,
+            autonomously collecting 18,000 robot interaction-sound
+            pairs to learn a mapping between acoustic signals and collision
+            locations on the robot end-effector link. By leveraging relative
+            features between microphones, SonicBoom achieves localization
+            errors of 0.43cm for in-distribution interactions and maintains
+            robust performance of 2.22cm error even with novel objects
+            and contact conditions. We demonstrate the system’s practical
+            utility through haptic mapping of occluded branches in mock
+            canopy settings, showing that acoustic-based sensing can enable
+            reliable robot navigation in visually challenging environments.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="1236" height="695" src="https://www.youtube.com/embed/4bdHyQtuqrM" title="CMU Robotics | SonicBoom: Contact Localization Using Array of Microphones" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+
+      <!-- Graph Representation  -->
+        <div class="content">
+          <h2 class="title is-3">SonicBoom Hardware</h2>
+          <p>
+            SonicBoom end-effector design consists of a 4” x 12” (radius x height) PVC pipe housing six piezoelectric contact microphones. The end-effector resembles a boom microphone
+            commonly used in film or TV production, inspiring the naming of SonicBoom. Inside the end-effector are two rings of three microphones each, positioned at both ends of the
+            tube. 
+          </p>
+          <p>
+            The contact surface can be parameterized in a 2D space defined by height <i>z</i> and azimuth angle <i>θ</i>.  The two-ring configuration provides overlapping
+            coverage regions for redundant sensing while extending the contact-aware surface along the entire length of the endeffector.
+          </p>
+
+   
+          <figure style="text-align: center;">
+            <img src="./static/images/sonicboom_hw_v2.jpg" 
+                 class="interpolation-image"
+                 alt="GNN Input Output"/>
+            <figcaption>(Left) Contact point parameterized in cylindrical coordinate (Middle) Inside view of the end-effector housing 6 mics (Right) The name 'SonicBoom' is a pun on the boom microphone commonly used in audio recording. </figcaption>
+        </figure>
+         
+        </div>
+      <!--/ Graph Representation  -->
+
+  
+
+      <!-- Graph Representation  -->
+        <div class="content">
+          <h2 class="title is-3">Learning Audio Localization</h2>
+          <p>
+            Traditional sound source localization methods typically rely on analytical models assuming uniform propagation media like air or
+            elastomers. However, contact-based localization through robot structures presents unique challenges. Vibrations through non-uniform
+            structures like a robot end-effector-link exhibit complex behavior as signal propagates. Thus, we address this challenge through feature engineering and learning-based approach.   
+          </p>
+          <p>
+            <b>Mel Spectrogram</b> capture the energy
+            distribution across frequency and time, but do
+            not explicitly encode the relative timing differences between
+            each microphone pairs that are crucial for localization.
+          </p>
+
+          <p>
+            <b>GCC-PHAT</b> Generalized Cross-Correlation with Phase
+            Transform (GCC-PHAT) explicitly computes similarity
+            between microphone pairs as a function of time-lag. This
+            representation improves robustness to noise and reverberation
+            by normalizing the cross-power spectrum to have unit
+            magnitude at all frequencies, GCC-PHAT emphasizes phase
+            alignment while being robust to amplitude variations between
+            microphones
+          </p>
+
+          <p>
+            <b>Robot Proprioception</b> provides a
+            strong prior for contact localization. The intuition is straightforward
+            yet effective: collision is likely to occur in the
+            direction of robot’s motion and highly unlikely on the opposite
+            side, particularly when interacting with static and inanimate
+            objects. We use one-second trajectory of the end-effector’s
+            pose and velocity.
+          </p>
+
+
+          
+          <figure style="text-align: center;">
+            <img src="./static/images/system_overviewv3.jpg" 
+                 class="interpolation-image"
+                 alt="GNN Input Output"/>
+            <figcaption>System overview for contact localization in two settings. Each sensing modality is encoded into a latent feature before being fused by the
+              multi-sensory self-attention transformer encoder. The output prediction is represented in cylindrical coordinate z, θ along SonicBoom surface, which can be
+              used for haptic mapping or localization. </figcaption>
+        </figure>
+          
+        </div>
+
+      <!--/ Graph Representation  -->
+      
+
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Additional Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3">Dataset Generation</h2>
+
+    <!-- First Row: 1 GIF and Text Column -->
+    <p>
+      We employ an automated data collection pipeline using a Franka robot equipped with our SonicBoom end-effector, capturing acoustic signatures from various striking actions and beam objects in real-world collision data. Our dataset pairs six-channel audio signals and robot proprioceptive data with contact locations on the SonicBoom surface represented as (z, θ).
+    </p>
+
+    <div class="columns">
+      <div class="column">
+        <div class="dataset">
+          <img src="./static/images/data_collect.gif" alt="Data Collection GIF" style="width: 100%; height: auto;">
+          <p class="caption" style="text-align: center;">Robot striking wooden rod to collect collision sounds.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="dataset">
+          <img src="./static/images/wood.jpg" alt="Another Image" style="width: 100%; height: auto;">
+          <p class="caption" style="text-align: center;">Training and test objects with varying dimension and geometric complexity.</p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Second Row: 3 GIFs with Text -->
+  <div class="columns">
+    <div class="column">
+      <div class="contact-policy">
+        <img src="./static/images/label1.gif" alt="gif1" style="width: 100%; height: auto;">
+      </div>
+    </div>
+    <div class="column">
+      <div class="contact-policy">
+        <img src="./static/images/label2.gif" alt="gif2" style="width: 100%; height: auto;">
+      </div>
+    </div>
+    <div class="column">
+      <div class="contact-policy">
+        <img src="./static/images/label3.gif" alt="gif2" style="width: 100%; height: auto;">
+      </div>
+    </div>
+  </div>
+  <p class="subtitle has-text-centered">
+    <span class="dnerf"> Label for the contact point on the SonicBoom surface is obtained from post-processing the robot trajectory with meshes to determine the closest point of intersection.
+  </p>
+  </div>
+</section>
+
+
+<!-- Additional Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+      <!-- Results for FWD model  -->
+      <div class="content">
+        <h2 class="title is-3">Robot Experiments</h2>
+
+        <p>
+          We experiment with
+SonicBoom’s practical utility through two settings: (1) robot-active haptic mapping in occluded
+spaces inspired from robot arm reaching through cluttered branches in an agriculture setting, (2) robot-stationary localization where the human strikes various locations on SonicBoom surface to isolate the contribution of acoustic sensing from robot Proprioception.
+        </p>
+
+        <figure style="text-align: center;">
+          <img src="./static/images/mapping_v4.jpg" 
+               class="interpolation-image"
+               alt="exploration"/>
+          <figcaption> (Left) To get contact trajectories, the robot employs a simple exploration motion based off the object's scanned pointcloud. 
+            Pre-strike positions are sampled and filtered (<span style="color: green;">green</span>). For each remaining point, the robot strikes left,right,up,down in the x,y plane. 
+            (Right) After many collisions, we obtain prediction of contact points (<span style="color: red;">red</span>). </figcaption>
+      </figure>
+
+      <figure style="text-align: center;">
+        <img src="./static/images/localization_drum_v2.jpg" 
+             class="interpolation-image"
+             alt="drum"/>
+        <figcaption> Zero-shot evaluation for (top) novel contact event where human
+          strikes robot as opposed to robot striking the object, and (bottom) novel objects
+          with different material properties. Prediction points are shown in (<span style="color: red;">red</span>).</figcaption>
+    </figure>
+
+
+
+      
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This site was created from Nerfie's template. Thanks to Keunhong Park.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
