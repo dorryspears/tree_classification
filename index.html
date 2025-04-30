@@ -22,6 +22,25 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <style>
+    .video-container {
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .video-container video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .video-container p {
+      padding: 10px 0;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+  </style>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
@@ -122,12 +141,90 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Agricultural environments are highly unstructured and variable, posing challenges for robotic manipulation systems that rely solely on visual perception. We present a multi-modal classification framework that fuses audio and visual data to identify which part of a tree—leaf, twig, trunk, or ambient—a robot is in contact with. Evaluated on real robot data containing motor noise and out-of-distribution audio, our approach achieves an <strong>F1-score of 0.74</strong>. These results demonstrate the promise of audio-visual perception for enabling safe, contact-rich manipulation in challenging agricultural settings.
+            Agricultural environments are highly unstructured and variable, posing challenges for robotic manipulation systems that rely solely on visual perception. We present a multi-modal classification framework that fuses audio and visual data to identify which part of a tree—leaf, twig, trunk, or ambient—a robot is in contact with. Evaluated on real robot data containing motor noise and out-of-distribution audio, our approach achieves an <strong>F1-score of 0.82</strong>. These results demonstrate the promise of audio-visual perception for enabling safe, contact-rich manipulation in challenging agricultural settings.
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
+  </div>
+</section>
+
+<!-- Video Demonstrations Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video Demonstrations</h2>
+        <div class="content has-text-justified">
+          <p>
+            The following videos demonstrate our model performing real-time classification of contact events with different tree structures. Our multi-modal approach successfully identifies the contacted surface (leaf, twig, or trunk) under varying environmental conditions using both vision and acoustic sensing. These examples illustrate the robustness of our approach across both controlled experimental setups (handheld probe) and deployment on a robotic platform with inherent motion and sensor noise.
+          </p>
+        </div>
+        
+        <h3 class="title is-4">Robot Contact Examples</h3>
+        <div class="columns is-multiline">
+          <div class="column is-one-third">
+            <div class="video-container">
+              <video controls width="100%">
+                <source src="./static/videos/leaf_robot.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered"><strong>Leaf Contact (Robot)</strong></p>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-container">
+              <video controls width="100%">
+                <source src="./static/videos/twig_robot.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered"><strong>Twig Contact (Robot)</strong></p>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-container">
+              <video controls width="100%">
+                <source src="./static/videos/trunk_robot.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered"><strong>Trunk Contact (Robot)</strong></p>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="title is-4 mt-5">Handheld Probe Examples</h3>
+        <div class="columns is-multiline">
+          <div class="column is-one-third">
+            <div class="video-container">
+              <video controls width="100%">
+                <source src="./static/videos/leaf_probe.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered"><strong>Leaf Contact (Probe)</strong></p>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-container">
+              <video controls width="100%">
+                <source src="./static/videos/twig_probe.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered"><strong>Twig Contact (Probe)</strong></p>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-container">
+              <video controls width="100%">
+                <source src="./static/videos/trunk_probe.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered"><strong>Trunk Contact (Probe)</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -223,7 +320,7 @@ data collection.</figcaption>
         <h2 class="title is-3">Quantitative Results</h2>
         <div class="content has-text-justified">
           <p>
-            When trained on human probe data and tested on robot recordings, our fused audio-visual model achieves a multiclass <strong>F1-score of 0.74</strong> (Precision 0.75, Recall 0.73), outperforming audio-only (0.53) and image-only (0.55) baselines. Binary contact detection reaches <strong>F1 = 0.90</strong>.
+            When trained on human probe data and tested on robot recordings, our fused audio-visual model achieves a multiclass <strong>F1-score of 0.82</strong>, outperforming audio-only (0.53) and image-only (0.55) baselines. Binary contact detection reaches <strong>F1 = 0.94</strong>.
           </p>
         </div>
         
@@ -233,7 +330,7 @@ data collection.</figcaption>
               <img src="./static/images/confusion_matrix.png" 
                    class="interpolation-image"
                    alt="Multiclass Results"/>
-              <figcaption>Figure 7: Confusion matrix of multiclass classification resultsjjjj.</figcaption>
+              <figcaption>Figure 7: Confusion matrix of multiclass classification results.</figcaption>
             </figure>
           </div>
         </div>
